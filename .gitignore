@@ -121,7 +121,7 @@ venv.bak/
 data/
 partners_data_spliter/CriteoSearchData
 
-partners_data_spliter/sr-venv
+sr-venv/
 
 # mkdocs documentation
 /site
