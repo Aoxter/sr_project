@@ -10,7 +10,7 @@ class partner_data_reader:
         self.partners_data_list = []
         self.data_directory = path_to_data
         # first dates for partners
-        self.current_date = {}
+        self.current_date = None
         self.headers = ['Sale', 'SalesAmountInEuro', 'time_delay_for_conversion', 'click_timestamp', 'nb_clicks_1week',
                         'product_price', 'product_age_group', 'device_type', 'audience_id', 'product_gender',
                         'product_brand', 'product_category_1', 'product_category_2', 'product_category_3',
@@ -34,15 +34,19 @@ class partner_data_reader:
             partner_df['click_timestamp'] = [datetime.date(x) for x in partner_df['click_timestamp']]
             # first day (csv is sorted)
             first_day = partner_df['click_timestamp'][0]
-            self.current_date[partner_id] = first_day
+            if self.current_date is None:
+                self.current_date = first_day
+            else:
+                if self.current_date > first_day:
+                    self.current_date = first_day
 
     def next_day(self):
         # clear previous day data
         self.partners_data_list.clear()
         for partner_id in self.partners_id_list:
-            self.partners_data_list.append(self.get_next_day_partner_data(partner_id, self.current_date[partner_id]))
-            # date update
-            self.current_date[partner_id] += datetime.timedelta(days=1)
+            self.partners_data_list.append(self.get_next_day_partner_data(partner_id, self.current_date))
+        # date update
+        self.current_date += datetime.timedelta(days=1)
         return self.partners_data_list
 
     def get_next_day_partner_data(self, partner_id, day):
@@ -55,4 +59,4 @@ class partner_data_reader:
 
 
 if __name__ == "__main__":
-    pdr = partner_data_reader(partner_id=["0A2CEC84A65760AD90AA751C1C3DD861"])
+    pdr = partner_data_reader(partners_id=["0A2CEC84A65760AD90AA751C1C3DD861"])
