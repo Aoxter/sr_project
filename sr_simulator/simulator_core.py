@@ -2,7 +2,7 @@ from sr_simulator.partner_data_reader import partner_data_reader
 from sr_simulator.per_partner_simulator import per_partner_simulator
 
 class simulator_core:
-    def __init__(self, partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, UCB_beta, path_to_data="../data/"):
+    def __init__(self, partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data="../data/"):
         self.partners_to_involve_in_simulation = partners_to_involve_in_simulation
         self.partners_to_read_data_from = partners_to_read_data_from
         # list with all partners df in same order as in partners_id_list
@@ -10,18 +10,22 @@ class simulator_core:
         self.data_directory = path_to_data
         # list of optimizers for each partner
         self.product_list_optimizer = []
+        self.all_partners_results_dict = {}
         for partner_id in self.partners_to_involve_in_simulation:
-            self.product_list_optimizer.append(per_partner_simulator(partner_id, NPM, seed, UCB_beta))
+            self.product_list_optimizer.append(per_partner_simulator(partner_id, NPM, seed, how_many_ratio, UCB_beta, click_cost))
+            self.all_partners_results_dict[partner_id] = {}
         self.pdr = partner_data_reader(self.partners_to_read_data_from, self.data_directory)
+
 
     def next_day(self):
         self.partners_one_day_data_list = self.pdr.next_day()
         for plo in self.product_list_optimizer:
-            plo.next_day(self.filter_out_other_partners_data(plo.partner_id))
+            single_partner_result_dict = plo.next_day(self.filter_out_other_partners_data(plo.partner_id))
+            self.all_partners_results_dict[plo.partner_id] = (single_partner_result_dict)
         # split_many_partners_data - podzieli self.partners_one_day_data_list
         # split_partner_data - podzieli dane pojedynczych partnerów
-        # split_df - podzili df w ramach funkcji wyżej
-        # TODO return gain
+        # split_df - podzieli df w ramach funkcji wyżej
+        return self.all_partners_results_dict
 
     def filter_out_other_partners_data(self, partner_id):
         for tuple in self.partners_one_day_data_list:
