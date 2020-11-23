@@ -47,7 +47,7 @@ class partner_data_reader:
             data_partner_tuple = (partner_id, self.get_next_day_partner_data(partner_id, self.current_date))
             self.partners_one_day_data_list.append(data_partner_tuple)
         # date update
-        self.current_date += datetime.timedelta(days=1)
+        self.current_date += timedelta(days=1)
         return self.partners_one_day_data_list
 
     def get_next_day_partner_data(self, partner_id, day):
@@ -55,7 +55,7 @@ class partner_data_reader:
         partner_df = pd.read_csv(partner_path, sep=",", dtype=self.dtypes)
         partner_df['click_timestamp'] = pd.to_datetime(partner_df['click_timestamp'])
         partner_df['click_timestamp'] = [datetime.date(x) for x in partner_df['click_timestamp']]
-        next_day_df = partner_df[partner_df['click_timestamp'] == str(day)]
+        next_day_df = partner_df[partner_df['click_timestamp'] == day]
         return next_day_df
 
 
