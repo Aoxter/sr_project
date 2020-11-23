@@ -1,13 +1,40 @@
 import configparser
 from sr_simulator.simulator_core import simulator_core
+from sr_simulator.simulation_results_postprocessor import simulation_results_postprocessor
 import sys
 
-def execute_simulation(partners_to_involve_in_simulation, partners_to_read_data_from, days, NPM, seed, UCB_beta, path_to_data):
-    # TODO load partners profiles
-    sim_core = simulator_core(partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, UCB_beta, path_to_data)
+def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_data_from_str, days, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data):
+    # TODO load partners profiles?
+    partners_to_involve_in_simulation = partners_to_involve_in_simulation_str.split(",")
+    partners_to_read_data_from = partners_to_read_data_from_str.split(",")
+    sim_core = simulator_core(partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data)
+    all_partners_results_dict = {}
+    reoriented_for_each_partner = {}
+    for partner_id in partners_to_involve_in_simulation:
+        all_partners_results_dict[partner_id] = []
+        reoriented_for_each_partner[partner_id] = {}
     for day in range(1, days):
-        results = sim_core.next_day()
+        results_dict = sim_core.next_day()
+        for partner in results_dict:
+            all_partners_results_dict[partner].append(results_dict[partner])
         # TODO simulation_results_postproces
+    postprocessor = simulation_results_postprocessor(all_partners_results_dict)
+    final_results = {}
+    reoriented_for_each_partner = postprocessor.reorient_results_for_each_partner()
+    aggregated_for_each_partner = postprocessor.aggregate_results_for_each_partner(reoriented_for_each_partner)
+    aggregated_for_all_partners = postprocessor.aggregate_results_for_all_partners(aggregated_for_each_partner)
+    summed_for_all_partners = postprocessor.sum_results_for_all_partners(aggregated_for_all_partners)
+    final_results['for_individual_partners'] = all_partners_results_dict
+    final_results['reoriented_for_each_partner'] = reoriented_for_each_partner
+    final_results['aggregated_for_each_partner'] = aggregated_for_each_partner
+    final_results['aggregated_for_all_partners'] = aggregated_for_all_partners
+    final_results['summed_for_all_partners'] = summed_for_all_partners
+    save_results(final_results)
+
+def save_results(result_dict, path = "results.json"):
+    import json
+    with open('result.json', 'w') as file:
+        json.dump(result_dict, file)
 
 def align_config():
     missing_arg_flag = False
@@ -16,8 +43,10 @@ def align_config():
     steps = None
     NPM = None
     seed = None
+    how_many_ratio = None
     UCB_beta = None
     path = None
+    click_cost = None
     config = configparser.ConfigParser()
     config.read('config.ini')
     if config.has_option('OPTIONS', 'partners_to_involve_in_simulation'):
@@ -45,6 +74,11 @@ def align_config():
     else:
         print("ERROR! Missing pseudorandom_seed value in config.ini")
         missing_arg_flag = True
+    if config.has_option('OPTIONS', 'how_many_ratio'):
+        how_many_ratio = config.get('OPTIONS', 'how_many_ratio')
+    else:
+        print("ERROR! Missing how_many_ratio value in config.ini")
+        missing_arg_flag = True
     if config.has_option('OPTIONS', 'UCB_beta'):
         UCB_beta = config.get('OPTIONS', 'UCB_beta')
     else:
@@ -55,11 +89,16 @@ def align_config():
     else:
         print("ERROR! Missing path_to_data value in config.ini")
         missing_arg_flag = True
+    if config.has_option('OPTIONS', 'click_cost'):
+        click_cost = config.get('OPTIONS', 'click_cost')
+    else:
+        print("ERROR! Missing click_cost value in config.ini")
+        missing_arg_flag = True
     if missing_arg_flag == True:
         input("Press any key to exit")
         sys.exit()
     else:
-        execute_simulation(PTIIS, PTRDF, steps, NPM, seed, UCB_beta, path)
+        execute_simulation(PTIIS, PTRDF, int(steps), float(NPM), int(seed), float(how_many_ratio), UCB_beta, int(click_cost), path)
 
 
 if __name__ == "__main__":
