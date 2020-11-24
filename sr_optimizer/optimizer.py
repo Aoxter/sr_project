@@ -21,15 +21,21 @@ class optimizer:
 
     def __get_excluded_products_pseudorandomly(self):
         dummy_list_of_potentially_excluded_products = self.products
+        dummy_list_of_potentially_excluded_products.sort()
         dummy_how_many_products = round(len(dummy_list_of_potentially_excluded_products) / self.how_many_ratio)
+        print("Produkty wykluczone na otrzymane: ", dummy_how_many_products, "/", len(dummy_list_of_potentially_excluded_products), ":")
         random.seed(self.seed)
         excluded_products = random.sample(dummy_list_of_potentially_excluded_products, dummy_how_many_products)
         if excluded_products == None:
             excluded_products = []
         #return self.date, excluded_products
+        print("Excluded: ", excluded_products)
         return excluded_products
 
     def __get_products_seen_today(self, data_df):
-        products = data_df['product_id'].unique().tolist()
+        if data_df.empty:
+            products = []
+        else:
+            products = data_df['product_id'].unique().tolist()
         return products
 

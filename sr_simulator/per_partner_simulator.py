@@ -5,6 +5,7 @@ class per_partner_simulator:
     def __init__(self, partner_id, NPM, seed, how_many_ratio, UCB_beta, click_cost):
         self.partner_id = partner_id
         self.partner_data_df = None
+        self.partner_data_df_without_excluded = None
         self.yesterday_excluded = []
         self.next_day_excluded_products = []
         self.first_day_flag = True
@@ -13,25 +14,23 @@ class per_partner_simulator:
         self.date = None
 
     def next_day(self, partner_data_df):
-        self.partner_data_df = None
-        if self.yesterday_excluded == []:
-            self.partner_data_df = partner_data_df
-        else:
-            self.partner_data_df = partner_data_df
+        self.partner_data_df = partner_data_df
+        self.partner_data_df_without_excluded = partner_data_df
+        print("Produktów dziś: ", partner_data_df['product_id'].nunique())
+        print("Yesterday: ", self.yesterday_excluded)
+        if self.yesterday_excluded != []:
             # TODO credits for Patryk Baryła
-            self.partner_data_df['product_id'].apply(lambda x: x not in self.yesterday_excluded)
+            self.partner_data_df_without_excluded = self.partner_data_df_without_excluded[self.partner_data_df_without_excluded['product_id'].apply(lambda x: x not in self.yesterday_excluded)]
             # TODO credits end
         try:
             self.date = self.partner_data_df['click_timestamp'].values[0]
         except:
             self.date = None
-        # update yesterday excluded list
-        if self.first_day_flag:
-            self.yesterday_excluded = []
-        else:
-            self.yesterday_excluded = self.next_day_excluded_products
+        print("Yesterday excluded: ", len(self.yesterday_excluded))
         # get next day excluded
-        self.next_day_excluded_products = self.optimizer.next_day(self.partner_data_df)
+        self.next_day_excluded_products = self.optimizer.next_day(self.partner_data_df_without_excluded)
+        # update yesterday excluded list
+        self.yesterday_excluded = self.next_day_excluded_products
         return self.calculate_per_day_profit_gain_factors()
 
     def filter_out_other_partners_data(self):
@@ -51,27 +50,23 @@ class per_partner_simulator:
             profit_losses_for_each_product = []
             sales_cost = 0.0
             clicks = 0
-            for product in all_products:
-                mask = self.partner_data_df['product_id'] == product
-                product_df = self.partner_data_df[mask]
-                clicks += 1
-                if product in self.yesterday_excluded:
-                    clicks_saved = self.partner_data_df['product_id'].value_counts()[product]
-                    click_savings_for_each_product.append(clicks_saved * self.click_cost)
-                    sales_lost = 0.0
-                    for _, row in product_df.iterrows():
-                        if row['Sale'] == 1:
-                            sale_price = row['SalesAmountInEuro']
-                            sales_lost += sale_price
-                            sales_cost += sale_price
-                    sale_losses_for_each_product.append(sales_lost)
-                    profit_losses_for_each_product.append(sales_lost * 0.1)
-                # else:
-                #     clicks += self.partner_data_df['product_id'].value_counts()[product]
-                #     for _, row in product_df.iterrows():
-                #         if row['Sale'] == 1:
-                #             sale_price = row['SalesAmountInEuro']
-                #             sales_cost += sale_price
+            if self.yesterday_excluded != []:
+                for product in all_products:
+                    mask = self.partner_data_df['product_id'] == product
+                    product_df = self.partner_data_df[mask]
+                    if product in self.yesterday_excluded:
+                        clicks_saved = self.partner_data_df['product_id'].value_counts()[product]
+                        click_savings_for_each_product.append(clicks_saved * self.click_cost)
+                        sales_lost = 0.0
+                        for _, row in product_df.iterrows():
+                            if row['Sale'] == 1:
+                                sale_price = row['SalesAmountInEuro']
+                                sales_lost += sale_price
+                                sales_cost += sale_price
+                        sale_losses_for_each_product.append(sales_lost)
+                        profit_losses_for_each_product.append(sales_lost * 0.1)
+                    else:
+                        clicks += 1
             click_savings = 0.0
             sale_losses = 0.0
             profit_losses = 0.0
@@ -88,4 +83,5 @@ class per_partner_simulator:
         result['profit_losses'] = profit_losses
         result['profit_gain'] = profit_gain
         print(self.partner_id, ", ", self.date, ": ", result)
+        print("-------------------------------------------------")
         return result
