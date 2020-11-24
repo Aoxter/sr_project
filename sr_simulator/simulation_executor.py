@@ -2,6 +2,7 @@ import configparser
 from sr_simulator.simulator_core import simulator_core
 from sr_simulator.simulation_results_postprocessor import simulation_results_postprocessor
 import sys
+import matplotlib.pyplot as plt
 
 def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_data_from_str, days, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data):
     # TODO load partners profiles?
@@ -30,6 +31,24 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
     final_results['aggregated_for_all_partners'] = aggregated_for_all_partners
     final_results['summed_for_all_partners'] = summed_for_all_partners
     save_results(final_results)
+    # x axis values
+    x = []
+    for day in range(1, days):
+        x.append(day)
+    # corresponding y axis values
+    y = reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']
+    # plotting the points
+    plt.plot(x, y)
+    # naming the x axis
+    plt.xlabel('Days of simulation')
+    # naming the y axis
+    plt.ylabel('Profit gain')
+    # giving a title to my graph
+    plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
+
+    # function to show the plot
+    plt.show()
+
 
 def save_results(result_dict, path = "results.json"):
     import json
