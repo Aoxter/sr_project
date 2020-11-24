@@ -4,11 +4,11 @@ from sr_simulator.simulation_results_postprocessor import simulation_results_pos
 import sys
 import matplotlib.pyplot as plt
 
-def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_data_from_str, days, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data):
+def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_data_from_str, days, NPM, seed, how_many_ratio, UCB_beta, path_to_data):
     # TODO load partners profiles?
     partners_to_involve_in_simulation = partners_to_involve_in_simulation_str.split(",")
     partners_to_read_data_from = partners_to_read_data_from_str.split(",")
-    sim_core = simulator_core(partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data)
+    sim_core = simulator_core(partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, path_to_data)
     all_partners_results_dict = {}
     reoriented_for_each_partner = {}
     for partner_id in partners_to_involve_in_simulation:
@@ -52,7 +52,7 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
 
 def save_results(result_dict, path = "results.json"):
     import json
-    with open('result.json', 'w') as file:
+    with open(path, 'w') as file:
         json.dump(result_dict, file)
 
 def align_config():
@@ -65,7 +65,6 @@ def align_config():
     how_many_ratio = None
     UCB_beta = None
     path = None
-    click_cost = None
     config = configparser.ConfigParser()
     config.read('config.ini')
     if config.has_option('OPTIONS', 'partners_to_involve_in_simulation'):
@@ -108,16 +107,11 @@ def align_config():
     else:
         print("ERROR! Missing path_to_data value in config.ini")
         missing_arg_flag = True
-    if config.has_option('OPTIONS', 'click_cost'):
-        click_cost = config.get('OPTIONS', 'click_cost')
-    else:
-        print("ERROR! Missing click_cost value in config.ini")
-        missing_arg_flag = True
     if missing_arg_flag == True:
         input("Press any key to exit")
         sys.exit()
     else:
-        execute_simulation(PTIIS, PTRDF, int(steps), float(NPM), int(seed), float(how_many_ratio), UCB_beta, int(click_cost), path)
+        execute_simulation(PTIIS, PTRDF, int(steps), float(NPM), int(seed), float(how_many_ratio), UCB_beta, path)
 
 
 if __name__ == "__main__":

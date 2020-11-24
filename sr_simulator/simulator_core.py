@@ -1,8 +1,9 @@
 from sr_simulator.partner_data_reader import partner_data_reader
 from sr_simulator.per_partner_simulator import per_partner_simulator
+from sr_simulator.click_cost_calculator import calculate_click_cost
 
 class simulator_core:
-    def __init__(self, partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, click_cost, path_to_data="../data/"):
+    def __init__(self, partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, path_to_data="../data/"):
         self.partners_to_involve_in_simulation = partners_to_involve_in_simulation
         self.partners_to_read_data_from = partners_to_read_data_from
         # list with all partners df in same order as in partners_id_list
@@ -11,10 +12,16 @@ class simulator_core:
         # list of optimizers for each partner
         self.product_list_optimizer = []
         self.all_partners_results_dict = {}
+        self.click_costs = calculate_click_cost(partners_to_involve_in_simulation)
         for partner_id in self.partners_to_involve_in_simulation:
-            self.product_list_optimizer.append(per_partner_simulator(partner_id, NPM, seed, how_many_ratio, UCB_beta, click_cost))
+            partner_click_cost = 1
+            for c in self.click_costs:
+                if c[0] == partner_id:
+                    partner_click_cost = c[1]
+            self.product_list_optimizer.append(per_partner_simulator(partner_id, NPM, seed, how_many_ratio, UCB_beta, partner_click_cost))
             self.all_partners_results_dict[partner_id] = {}
         self.pdr = partner_data_reader(self.partners_to_read_data_from, self.data_directory)
+
 
 
     def next_day(self):

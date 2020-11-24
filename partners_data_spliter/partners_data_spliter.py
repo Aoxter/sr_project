@@ -14,7 +14,7 @@ def split_df(path):
     print(df_raw.dtypes)
     df_raw.sort_values(['click_timestamp'], ascending=True, inplace=True)
     for i, x in df_raw.groupby('partner_id'):
-        p = os.path.join(os.getcwd(), "data_{}.csv".format(i.lower()))
+        p = os.path.join(os.getcwd(), "data/data_{}.csv".format(i.lower()))
         x.to_csv(p, index=False)
 
 
