@@ -31,6 +31,7 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
     final_results['aggregated_for_all_partners'] = aggregated_for_all_partners
     final_results['summed_for_all_partners'] = summed_for_all_partners
     save_results(final_results)
+    # REORIENTED
     # x axis values
     x = []
     for day in range(1, days):
@@ -42,7 +43,25 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
     # naming the x axis
     plt.xlabel('Days of simulation')
     # naming the y axis
-    plt.ylabel('Profit gain')
+    plt.ylabel('Reoriented profit gain')
+    # giving a title to my graph
+    plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
+
+    # function to show the plot
+    plt.show()
+    # ACCUMULATED
+    # corresponding y axis values
+    y = []
+    acc = 0.0
+    for v in reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']:
+        acc += v
+        y.append(acc)
+    # plotting the points
+    plt.plot(x, y)
+    # naming the x axis
+    plt.xlabel('Days of simulation')
+    # naming the y axis
+    plt.ylabel('Accumulated profit gain')
     # giving a title to my graph
     plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
 

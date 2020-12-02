@@ -32,7 +32,6 @@ def calculate_click_cost(partners):
         f_temp = f_temp[:-1]
         f_temp = f_temp[:-1]
         f_temp = f_temp[:-1]
-        print(f, "/", f_temp)
         if f_temp in partners_temp:
             clicks = 0
             sales = 0.0
@@ -48,6 +47,7 @@ def calculate_click_cost(partners):
             print("sales: ", sales)
             click_cost = (sales * 0.12) / clicks
             print("click cost: ", click_cost)
+            print("--------------------------------------------")
             click_cost_per_partner.append((partner_id, click_cost))
     os.chdir(back_path)
     return click_cost_per_partner
