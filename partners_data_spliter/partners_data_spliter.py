@@ -10,7 +10,7 @@ def split_df(path):
                                 'product_gender', 'product_brand', 'product_category_1', 'product_category_2',
                                 'product_category_3', 'product_category_4', 'product_category_5', 'product_category_6',
                                 'product_category_7', 'product_country', 'product_id', 'product_title', 'partner_id', 'user_id'])
-    df_raw['click_timestamp'] = [datetime.fromtimestamp(x).date() for x in df_raw['click_timestamp']]
+    df_raw['click_timestamp'] = [datetime.utcfromtimestamp(x).date() for x in df_raw['click_timestamp']]
     print(df_raw.dtypes)
     df_raw.sort_values(['click_timestamp'], ascending=True, inplace=True)
     for i, x in df_raw.groupby('partner_id'):
@@ -19,6 +19,6 @@ def split_df(path):
 
 
 if __name__ == "__main__":
-    path = "CriteoSearchData"
+    path = "F:\Wielki Folder\Studia\Systemy Rekomendacyjne\Criteo_Conversion_Search\CriteoSearchData"
     print("start")
     split_df(path)

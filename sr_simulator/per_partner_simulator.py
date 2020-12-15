@@ -14,27 +14,46 @@ class per_partner_simulator:
         self.click_cost = click_cost
         self.date = None
 
-    def next_day(self, partner_data_df):
+    def next_day(self, partner_data_df, log_for_certification):
         self.partner_data_df = partner_data_df
         self.partner_data_df_without_excluded = partner_data_df
         self.partner_data_df_only_excluded = partner_data_df
-        print("Produktów dziś: ", partner_data_df['product_id'].nunique())
-        print("Excluded: ", self.yesterday_excluded)
+        print("Prodcuts today: ", partner_data_df['product_id'].nunique())
+        print("ProductsToExcluded (", len(self.yesterday_excluded), ")")
         if self.yesterday_excluded != []:
             # TODO credits for Patryk Baryła
             self.partner_data_df_without_excluded = self.partner_data_df_without_excluded[self.partner_data_df_without_excluded['product_id'].apply(lambda x: x not in self.yesterday_excluded)]
             self.partner_data_df_only_excluded = self.partner_data_df_only_excluded[self.partner_data_df_only_excluded['product_id'].apply(lambda x: x in self.yesterday_excluded)]
             # TODO credits end
-        print("Wiersze przed wykluczeniem: ", self.partner_data_df.shape[0])
-        print("Wiersze po wykluczeniu: ", self.partner_data_df_without_excluded.shape[0])
+        else:
+            self.partner_data_df_only_excluded = pd.DataFrame(columns = ['Sale', 'SalesAmountInEuro', 'time_delay_for_conversion', 'click_timestamp', 'nb_clicks_1week',
+                        'product_price', 'product_age_group', 'device_type', 'audience_id', 'product_gender',
+                        'product_brand', 'product_category_1', 'product_category_2', 'product_category_3',
+                        'product_category_4', 'product_category_5', 'product_category_6', 'product_category_7',
+                        'product_country', 'product_id', 'product_title', 'partner_id', 'user_id'])
+        try:
+            print("ProductsActuallyExcluded (", len(self.partner_data_df_only_excluded['product_id'].unique().tolist()), ")")
+        except:
+            print("ProductsActuallyExcluded (0): []")
         try:
             self.date = self.partner_data_df['click_timestamp'].values[0]
         except:
             self.date = None
+        day_dict = {}
+        day_dict['day'] = str(self.date)
+        day_dict['productsToExclude'] = self.yesterday_excluded
+        try:
+            actuallyExcludedlist = self.partner_data_df_only_excluded['product_id'].unique().tolist()
+            actuallyExcludedlist.sort()
+        except:
+            actuallyExcludedlist = []
+        day_dict['productsActuallyExcluded'] = actuallyExcludedlist
+        log_for_certification['days'].append(day_dict)
         # get next day excluded
         self.next_day_excluded_products = self.optimizer.next_day(self.partner_data_df_without_excluded)
         # update yesterday excluded list
         self.yesterday_excluded = self.next_day_excluded_products
+        self.yesterday_excluded.sort()
         return self.calculate_per_day_profit_gain_factors()
 
     def filter_out_other_partners_data(self):

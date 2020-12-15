@@ -24,10 +24,10 @@ class simulator_core:
 
 
 
-    def next_day(self):
+    def next_day(self, log_for_certification):
         self.partners_one_day_data_list = self.pdr.next_day()
         for plo in self.product_list_optimizer:
-            single_partner_result_dict = plo.next_day(self.filter_out_other_partners_data(plo.partner_id))
+            single_partner_result_dict = plo.next_day(self.filter_out_other_partners_data(plo.partner_id), log_for_certification)
             self.all_partners_results_dict[plo.partner_id] = (single_partner_result_dict)
         # split_many_partners_data - podzieli self.partners_one_day_data_list
         # split_partner_data - podzieli dane pojedynczych partnerów

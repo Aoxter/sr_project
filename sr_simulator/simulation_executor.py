@@ -1,11 +1,15 @@
 import configparser
-from sr_simulator.simulator_core import simulator_core
 from sr_simulator.simulation_results_postprocessor import simulation_results_postprocessor
+from sr_simulator.simulator_core import simulator_core
+import json
 import sys
 import matplotlib.pyplot as plt
 
+log_for_certification = {}
+
 def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_data_from_str, days, NPM, seed, how_many_ratio, UCB_beta, path_to_data):
-    # TODO load partners profiles?
+    log_for_certification['strategy'] = "random"
+    log_for_certification['days'] = []
     partners_to_involve_in_simulation = partners_to_involve_in_simulation_str.split(",")
     partners_to_read_data_from = partners_to_read_data_from_str.split(",")
     sim_core = simulator_core(partners_to_involve_in_simulation, partners_to_read_data_from, NPM, seed, how_many_ratio, UCB_beta, path_to_data)
@@ -15,7 +19,7 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
         all_partners_results_dict[partner_id] = []
         reoriented_for_each_partner[partner_id] = {}
     for day in range(1, days):
-        results_dict = sim_core.next_day()
+        results_dict = sim_core.next_day(log_for_certification)
         for partner in results_dict:
             all_partners_results_dict[partner].append(results_dict[partner])
         # TODO simulation_results_postproces
@@ -31,42 +35,46 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
     final_results['aggregated_for_all_partners'] = aggregated_for_all_partners
     final_results['summed_for_all_partners'] = summed_for_all_partners
     save_results(final_results)
-    # REORIENTED
-    # x axis values
-    x = []
-    for day in range(1, days):
-        x.append(day)
-    # corresponding y axis values
-    y = reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']
-    # plotting the points
-    plt.plot(x, y)
-    # naming the x axis
-    plt.xlabel('Days of simulation')
-    # naming the y axis
-    plt.ylabel('Reoriented profit gain')
-    # giving a title to my graph
-    plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
-
-    # function to show the plot
-    plt.show()
-    # ACCUMULATED
-    # corresponding y axis values
-    y = []
-    acc = 0.0
-    for v in reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']:
-        acc += v
-        y.append(acc)
-    # plotting the points
-    plt.plot(x, y)
-    # naming the x axis
-    plt.xlabel('Days of simulation')
-    # naming the y axis
-    plt.ylabel('Accumulated profit gain')
-    # giving a title to my graph
-    plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
-
-    # function to show the plot
-    plt.show()
+    #json_object = json.dumps(log_for_certification, indent=3)
+    with open('simulation_log.json', 'w') as fp:
+        json.dump(log_for_certification, fp, indent=3)
+    print("SIMULATION FINISHED")
+    # # REORIENTED
+    # # x axis values
+    # x = []
+    # for day in range(1, days):
+    #     x.append(day)
+    # # corresponding y axis values
+    # y = reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']
+    # # plotting the points
+    # plt.plot(x, y)
+    # # naming the x axis
+    # plt.xlabel('Days of simulation')
+    # # naming the y axis
+    # plt.ylabel('Reoriented profit gain')
+    # # giving a title to my graph
+    # plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
+    #
+    # # function to show the plot
+    # plt.show()
+    # # ACCUMULATED
+    # # corresponding y axis values
+    # y = []
+    # acc = 0.0
+    # for v in reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']:
+    #     acc += v
+    #     y.append(acc)
+    # # plotting the points
+    # plt.plot(x, y)
+    # # naming the x axis
+    # plt.xlabel('Days of simulation')
+    # # naming the y axis
+    # plt.ylabel('Accumulated profit gain')
+    # # giving a title to my graph
+    # plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
+    #
+    # # function to show the plot
+    # plt.show()
 
 
 def save_results(result_dict, path = "results.json"):

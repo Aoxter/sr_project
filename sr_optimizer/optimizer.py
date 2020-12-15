@@ -9,9 +9,14 @@ class optimizer:
         self.products = []
         self.products_df = None
         self.date = None
+        self.firstDayFlag = True
 
     def next_day(self, next_day_data):
-        self.products_df, self.products = self.__get_products_seen_today(next_day_data)
+        if self.products_df is None:
+            self.products_df = next_day_data
+        else:
+            self.products_df = self.products_df.append(next_day_data, ignore_index=True)
+        self.products = self.__get_products_seen_today()
         if next_day_data.empty:
             excluded_products = []
         else:
@@ -26,7 +31,6 @@ class optimizer:
         dummy_list_of_potentially_excluded_products = self.products
         dummy_list_of_potentially_excluded_products.sort()
         dummy_how_many_products = round(len(dummy_list_of_potentially_excluded_products) / self.how_many_ratio)
-        print("Produkty wykluczone na zapisane w optymizerze: ", dummy_how_many_products, "/", len(dummy_list_of_potentially_excluded_products), ":")
         random.seed(self.seed)
         excluded_products = random.sample(dummy_list_of_potentially_excluded_products, dummy_how_many_products)
         if excluded_products == None:
@@ -35,15 +39,19 @@ class optimizer:
         #print("Excluded: ", excluded_products)
         return excluded_products
 
-    def __get_products_seen_today(self, data_df):
-        products = self.products
-        products_df = self.products_df
-        if not data_df.empty:
-            print("Produkty przed: ", len(self.products))
-            for p in data_df['product_id'].unique().tolist():
-                if p not in products:
-                    products.append(p)
-        products_df.append(data_df, ignore_index=True)
+    def __get_products_seen_today(self):
+        products = self.products_df['product_id'].unique().tolist()
+        # if not data_df.empty:
+        #     print("Produkty przed: ", len(self.products))
+        #     for p in data_df['product_id'].unique().tolist():
+        #         if p not in products:
+        #             products.append(p)
+        # if self.firstDayFlag:
+        #     products_df = data_df
+        #     self.firstDayFlag = False
+        # else:
+        #     products_df.append(data_df, ignore_index=True)
         #products = list(dict.fromkeys(products))
-        return products_df, products
+        #products.sort()
+        return products
 
