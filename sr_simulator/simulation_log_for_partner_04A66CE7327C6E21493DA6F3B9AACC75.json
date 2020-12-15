@@ -1,0 +1,539 @@
+{
+   "strategy": "random",
+   "days": [
+      {
+         "day": "2020-08-03",
+         "productsToExclude": [],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-04",
+         "productsToExclude": [
+            "D9EDB9B66843168B9DB7A325AE4A861E"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-05",
+         "productsToExclude": [
+            "4E165C2FF8E655711899DEB0A5F3148E",
+            "685B97FF53FDDF7EAEAFE07CA038BBFB"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-06",
+         "productsToExclude": [
+            "5BF26ABE5A2409797F7F55FE04080FEA",
+            "8C8EF17FB186278BF21A737A78D5D3A8"
+         ],
+         "productsActuallyExcluded": [
+            "5BF26ABE5A2409797F7F55FE04080FEA",
+            "8C8EF17FB186278BF21A737A78D5D3A8"
+         ]
+      },
+      {
+         "day": "2020-08-07",
+         "productsToExclude": [
+            "4E165C2FF8E655711899DEB0A5F3148E",
+            "7689D7A646244798E6E349ED23214ACF",
+            "BB6566062ED1E4A426E79F6FA761EF1C"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-08",
+         "productsToExclude": [
+            "4E165C2FF8E655711899DEB0A5F3148E",
+            "74DE600331FDE2FDC29618ABC99744E1",
+            "B04482A391C6E6FAE07BE1311CC0CEF8"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-09",
+         "productsToExclude": [
+            "735F406110EC78EDC521691AC1691CD7",
+            "85FCE431C4623A243A6E486770BD2E41",
+            "D2BC93D2D250A8B439F1C71A08A10C7A",
+            "EFE18A5DDEBAAFC97C8975FF337FA129"
+         ],
+         "productsActuallyExcluded": [
+            "735F406110EC78EDC521691AC1691CD7",
+            "85FCE431C4623A243A6E486770BD2E41",
+            "D2BC93D2D250A8B439F1C71A08A10C7A"
+         ]
+      },
+      {
+         "day": "2020-08-10",
+         "productsToExclude": [
+            "64FA7EB363A3D03290029810D8500D5B",
+            "7E7F1B749A3185E21F5433F469CA04AD",
+            "B2D00DB2B563E624B4CF335C79FA29B7",
+            "D2BC93D2D250A8B439F1C71A08A10C7A"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-11",
+         "productsToExclude": [
+            "5CADB31C9A9FA70F9E119112B7AC95E1",
+            "8C8EF17FB186278BF21A737A78D5D3A8",
+            "A6A90A89CE194F490A031D396982382D",
+            "EB59CB97A53E9060F097B4D06EF47D35",
+            "EFE18A5DDEBAAFC97C8975FF337FA129"
+         ],
+         "productsActuallyExcluded": [
+            "8C8EF17FB186278BF21A737A78D5D3A8"
+         ]
+      },
+      {
+         "day": "2020-08-12",
+         "productsToExclude": [
+            "582D49E3C1AAE6D0B7E60255BB853618",
+            "8AC9A44A9055CE025A0F5904CC6F16B6",
+            "9A340DD03F542AF21884254E21FF1F55",
+            "D313ED9B7ED6EC60E0F329476BC22719",
+            "D5CEBA435C497EB23B9764FC387FE5F4"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-13",
+         "productsToExclude": [
+            "3E7B7793D88D0506D104DAE3F8830195",
+            "5D54AE5077B1A7F5ED640B1E6D81279D",
+            "78646B36A40B844A184B5CBE2B0B01FA",
+            "85E8983D6B8C4667C5E244CDFAEEAA5A",
+            "B275B74CA92CAF993E0DFECCA9CA3E24",
+            "B2D00DB2B563E624B4CF335C79FA29B7"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-14",
+         "productsToExclude": [
+            "3B3CC3BE8A18C7006A220B7C9D22C317",
+            "537A4531580D18BA5C44ADCE5ABFA8E4",
+            "735F406110EC78EDC521691AC1691CD7",
+            "7E7F1B749A3185E21F5433F469CA04AD",
+            "A8773E3BD969EBDB0290C0513AE44188",
+            "B04482A391C6E6FAE07BE1311CC0CEF8"
+         ],
+         "productsActuallyExcluded": [
+            "3B3CC3BE8A18C7006A220B7C9D22C317"
+         ]
+      },
+      {
+         "day": "2020-08-15",
+         "productsToExclude": [
+            "3B3CC3BE8A18C7006A220B7C9D22C317",
+            "52B9B4205E57D9F92C504BB28EF2513D",
+            "6FBF83599D68F95BDEF2C6435171D15C",
+            "7E448883F79A49E0670A90ECA9D2BBF1",
+            "A242AEAB2381073ABEB94DC553677AA7",
+            "A6A90A89CE194F490A031D396982382D"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-16",
+         "productsToExclude": [
+            "38DBF2070BCDBBBB6D395B54E0A82F2C",
+            "4D540C7981E590EEB75FF212FF343225",
+            "68EE00780789956E82D0C5EA126B3B86",
+            "78646B36A40B844A184B5CBE2B0B01FA",
+            "99D219B0809C76853B72F2A5FAA8D497",
+            "9A340DD03F542AF21884254E21FF1F55"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-17",
+         "productsToExclude": [
+            "38DBF2070BCDBBBB6D395B54E0A82F2C",
+            "4D540C7981E590EEB75FF212FF343225",
+            "68EE00780789956E82D0C5EA126B3B86",
+            "78646B36A40B844A184B5CBE2B0B01FA",
+            "99D219B0809C76853B72F2A5FAA8D497",
+            "9A340DD03F542AF21884254E21FF1F55"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-18",
+         "productsToExclude": [
+            "3575CF60D9D4FF917244FAEC9EAC1E0E",
+            "4890E05E5DC6577704924F9CAB81B7B7",
+            "685B97FF53FDDF7EAEAFE07CA038BBFB",
+            "76EBC15B79A3E83BE6D53FD7F46C8AFD",
+            "93BE295A9EDB22DCDB57BD13B11B8F03",
+            "94DB9D99AE2CD0948D35082983F584D2"
+         ],
+         "productsActuallyExcluded": [
+            "685B97FF53FDDF7EAEAFE07CA038BBFB"
+         ]
+      },
+      {
+         "day": "2020-08-19",
+         "productsToExclude": [
+            "3575CF60D9D4FF917244FAEC9EAC1E0E",
+            "4890E05E5DC6577704924F9CAB81B7B7",
+            "685B97FF53FDDF7EAEAFE07CA038BBFB",
+            "76EBC15B79A3E83BE6D53FD7F46C8AFD",
+            "93BE295A9EDB22DCDB57BD13B11B8F03",
+            "94DB9D99AE2CD0948D35082983F584D2"
+         ],
+         "productsActuallyExcluded": [
+            "685B97FF53FDDF7EAEAFE07CA038BBFB",
+            "94DB9D99AE2CD0948D35082983F584D2"
+         ]
+      },
+      {
+         "day": "2020-08-20",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "3575CF60D9D4FF917244FAEC9EAC1E0E",
+            "74DE600331FDE2FDC29618ABC99744E1",
+            "99D219B0809C76853B72F2A5FAA8D497",
+            "B04482A391C6E6FAE07BE1311CC0CEF8",
+            "B0FD36E8692CE8B50BD619DFD77A6FFF",
+            "EB59CB97A53E9060F097B4D06EF47D35"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-21",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "350BE382039B6C81C133FC8E95437656",
+            "6FBF83599D68F95BDEF2C6435171D15C",
+            "93BE295A9EDB22DCDB57BD13B11B8F03",
+            "B04482A391C6E6FAE07BE1311CC0CEF8",
+            "E42823AE72B7688A01365611D319587D",
+            "FE28F3CE224DEA3055B333A2AF5F211C"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-22",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "34BDA7349452CA553657F8600C56659D",
+            "6A44DE7451A6E4DC4F950EEAB370BC29",
+            "917782578404591E257859B665B9D647",
+            "A6A90A89CE194F490A031D396982382D",
+            "DFE1F4D767C1F25E77DA9AC1DFACD2E7",
+            "F99621623E51B7AB0D78CF4910DB8CC6"
+         ],
+         "productsActuallyExcluded": [
+            "F99621623E51B7AB0D78CF4910DB8CC6"
+         ]
+      },
+      {
+         "day": "2020-08-23",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "34BDA7349452CA553657F8600C56659D",
+            "68EE00780789956E82D0C5EA126B3B86",
+            "8C8EF17FB186278BF21A737A78D5D3A8",
+            "A1A39793EEEC63BCD706B78F5DA81348",
+            "DBF15E68CBC605238ED6A9D6B8620B47",
+            "F3C8A92432A5CB28B98EB0C23754F265"
+         ],
+         "productsActuallyExcluded": [
+            "68EE00780789956E82D0C5EA126B3B86",
+            "8C8EF17FB186278BF21A737A78D5D3A8"
+         ]
+      },
+      {
+         "day": "2020-08-24",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "330839A4CB643B865FEFABB9B266A917",
+            "685B97FF53FDDF7EAEAFE07CA038BBFB",
+            "8A1F01B5DD11C389ACE5F07633268DAE",
+            "99D219B0809C76853B72F2A5FAA8D497",
+            "D313ED9B7ED6EC60E0F329476BC22719",
+            "ED63CB3287536326E0604F69CA1A9EE9"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-25",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "330839A4CB643B865FEFABB9B266A917",
+            "67EE7413BD5B021AA6BB0E25E2476AD8",
+            "85FCE431C4623A243A6E486770BD2E41",
+            "917782578404591E257859B665B9D647",
+            "93C88BF19DF32BCFE6506A373DB06495",
+            "CCC0C7BEE57CA5AD8F3564DD525B499A",
+            "E667B762F402189EF574C36CBD12860E"
+         ],
+         "productsActuallyExcluded": [
+            "85FCE431C4623A243A6E486770BD2E41"
+         ]
+      },
+      {
+         "day": "2020-08-26",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "3254375C01C7C70AB94712E5856B8EE9",
+            "66252ED46098BA0B0D8967FD760374E3",
+            "85E8983D6B8C4667C5E244CDFAEEAA5A",
+            "90AB6A4A4D2B08D529EFFBEDAD5D974F",
+            "93BE295A9EDB22DCDB57BD13B11B8F03",
+            "CA61A2B0F07E4EBDF94F224885E2CBBF",
+            "E2911D769D3A185D1D79991E006F16FF"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-27",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2FDF4CF1DA04A386F3F1085DA8BFD621",
+            "64FA7EB363A3D03290029810D8500D5B",
+            "8435E032B0D29FFB6A2A97A03E6C26BE",
+            "8AEAE5380CD6A5BA3C5151B7F56B0066",
+            "90AB6A4A4D2B08D529EFFBEDAD5D974F",
+            "C6907770E168AD4600DE03CEC66806B7",
+            "DBF15E68CBC605238ED6A9D6B8620B47"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-08-28",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2E50147A8EE284BB62550D78C2F24239",
+            "60DDE7A979E86258E1FC0B4D87AC3656",
+            "7F85417877329F50C2F16C4B7F020BA7",
+            "85FCE431C4623A243A6E486770BD2E41",
+            "8AC9A44A9055CE025A0F5904CC6F16B6",
+            "BD90FD799BA389E02DA982A120284F66",
+            "D5CEBA435C497EB23B9764FC387FE5F4"
+         ],
+         "productsActuallyExcluded": [
+            "D5CEBA435C497EB23B9764FC387FE5F4"
+         ]
+      },
+      {
+         "day": "2020-08-29",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2E50147A8EE284BB62550D78C2F24239",
+            "5F2A8C889DE6A3BDEB4F4D1DFBC6506D",
+            "7D1B9219AFCB51BC65959800DF47FA8A",
+            "840EB0650D8784897A6B91D73FFC7B8B",
+            "85026A4605C3FC79475DE0870F09EEEE",
+            "B29646388D5ABB0FFEDE00F9AC62F4E7",
+            "CE8C2F3300AA3ED5F0C463B7C5F3E580"
+         ],
+         "productsActuallyExcluded": [
+            "85026A4605C3FC79475DE0870F09EEEE"
+         ]
+      },
+      {
+         "day": "2020-08-30",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2BC989ACB176A51B71CD7F38A257367C",
+            "5D54AE5077B1A7F5ED640B1E6D81279D",
+            "799F0AF15F9E6954BABA4C7D1548D0C2",
+            "840EB0650D8784897A6B91D73FFC7B8B",
+            "B0FD36E8692CE8B50BD619DFD77A6FFF",
+            "CAF5B1EAFDD818D2AC5271C8FA1CC91B",
+            "FAADA06CEED15FD75C2FA7D87288222C",
+            "FE28F3CE224DEA3055B333A2AF5F211C"
+         ],
+         "productsActuallyExcluded": [
+            "B0FD36E8692CE8B50BD619DFD77A6FFF"
+         ]
+      },
+      {
+         "day": "2020-08-31",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2B64ED91382766414621D9068746CA97",
+            "5D1EE876DD99E73FA48D205D47F700D0",
+            "78646B36A40B844A184B5CBE2B0B01FA",
+            "80817B3FEC2378E6A16E9E0BF9985946",
+            "B07D3E21AE7D752FB6DCC79AE6973947",
+            "CA61A2B0F07E4EBDF94F224885E2CBBF",
+            "F7AFDE91482377011F4B93585B6374EC",
+            "F99621623E51B7AB0D78CF4910DB8CC6"
+         ],
+         "productsActuallyExcluded": [
+            "5D1EE876DD99E73FA48D205D47F700D0"
+         ]
+      },
+      {
+         "day": "2020-09-01",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2928A1A1BEB311D399E04E4374B04D19",
+            "591819F7F129C0A647E68A4E0C85C517",
+            "7689D7A646244798E6E349ED23214ACF",
+            "7E448883F79A49E0670A90ECA9D2BBF1",
+            "A1A39793EEEC63BCD706B78F5DA81348",
+            "C626D3E147A6C6E44C322DAA9C304AB4",
+            "EDF79CE9F232944FA787F99F5CF9592F",
+            "EFE18A5DDEBAAFC97C8975FF337FA129"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-09-02",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "28C5C8C629EE4B9823716E949F8A622C",
+            "582D49E3C1AAE6D0B7E60255BB853618",
+            "735F406110EC78EDC521691AC1691CD7",
+            "7D1B9219AFCB51BC65959800DF47FA8A",
+            "9BB05B103FDC140A43E01C1C21F95E07",
+            "BD90FD799BA389E02DA982A120284F66",
+            "ED86860A2207D9ED315D6F25B87B1B5E",
+            "EDF79CE9F232944FA787F99F5CF9592F"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-09-03",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "26FD88AFD38FD9B440A1B5BC454AB9E0",
+            "5521AB7DE9A2D71EC24E3F55F46FC70F",
+            "6C7F3EB72576D14FD0230A8F60ED5774",
+            "799F0AF15F9E6954BABA4C7D1548D0C2",
+            "99D219B0809C76853B72F2A5FAA8D497",
+            "BB6566062ED1E4A426E79F6FA761EF1C",
+            "ECD596093DB9FB215EF56C71F1844FE5",
+            "ED63CB3287536326E0604F69CA1A9EE9"
+         ],
+         "productsActuallyExcluded": [
+            "26FD88AFD38FD9B440A1B5BC454AB9E0",
+            "ED63CB3287536326E0604F69CA1A9EE9"
+         ]
+      },
+      {
+         "day": "2020-09-04",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "265EF43EFB6A639FAE6DC1A25BC31A81",
+            "530DA4B76A297C51126C8D6375DC7D32",
+            "68EE00780789956E82D0C5EA126B3B86",
+            "7782C326415910E1E888E4FF46189EC4",
+            "93C88BF19DF32BCFE6506A373DB06495",
+            "B29646388D5ABB0FFEDE00F9AC62F4E7",
+            "E72577754616664ECE9609C6F8294297",
+            "EB59CB97A53E9060F097B4D06EF47D35"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-09-05",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "265EF43EFB6A639FAE6DC1A25BC31A81",
+            "530DA4B76A297C51126C8D6375DC7D32",
+            "68EE00780789956E82D0C5EA126B3B86",
+            "7689D7A646244798E6E349ED23214ACF",
+            "7782C326415910E1E888E4FF46189EC4",
+            "93C88BF19DF32BCFE6506A373DB06495",
+            "B0FD36E8692CE8B50BD619DFD77A6FFF",
+            "E39E033A6FF307A37D94BEB93E39BE9F",
+            "E667B762F402189EF574C36CBD12860E"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-09-06",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2515D5615BD01FDF7B4A39ADF95774ED",
+            "52B9B4205E57D9F92C504BB28EF2513D",
+            "67EE7413BD5B021AA6BB0E25E2476AD8",
+            "735F406110EC78EDC521691AC1691CD7",
+            "7689D7A646244798E6E349ED23214ACF",
+            "917782578404591E257859B665B9D647",
+            "B04482A391C6E6FAE07BE1311CC0CEF8",
+            "E03A8F89590D9A0D94E2BEAFD10BF0CF",
+            "E39E033A6FF307A37D94BEB93E39BE9F"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-09-07",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2515D5615BD01FDF7B4A39ADF95774ED",
+            "4D540C7981E590EEB75FF212FF343225",
+            "65C44A895E813CCE1F1736B417C40BA5",
+            "6C7F3EB72576D14FD0230A8F60ED5774",
+            "735F406110EC78EDC521691AC1691CD7",
+            "8C8EF17FB186278BF21A737A78D5D3A8",
+            "A6A90A89CE194F490A031D396982382D",
+            "DC1271BA6874AE23BF0AB53B8F2A5AB4",
+            "DFE1F4D767C1F25E77DA9AC1DFACD2E7"
+         ],
+         "productsActuallyExcluded": [
+            "735F406110EC78EDC521691AC1691CD7",
+            "8C8EF17FB186278BF21A737A78D5D3A8"
+         ]
+      },
+      {
+         "day": "2020-09-08",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2308D9C39FBEBE47FDCD5E028F1B3000",
+            "4890E05E5DC6577704924F9CAB81B7B7",
+            "62D9E52B5B640C62A7B9AFA2D9225D41",
+            "685B97FF53FDDF7EAEAFE07CA038BBFB",
+            "6A44DE7451A6E4DC4F950EEAB370BC29",
+            "8AC9A44A9055CE025A0F5904CC6F16B6",
+            "A08BA8258CF8185F6B33C962D604079C",
+            "D8DD3777B08F1AD1830C638FBB4C9F71",
+            "DBF15E68CBC605238ED6A9D6B8620B47"
+         ],
+         "productsActuallyExcluded": [
+            "685B97FF53FDDF7EAEAFE07CA038BBFB",
+            "DBF15E68CBC605238ED6A9D6B8620B47"
+         ]
+      },
+      {
+         "day": "2020-09-09",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2308D9C39FBEBE47FDCD5E028F1B3000",
+            "48129B18DCC8DD28036105B79255E4F5",
+            "60DDE7A979E86258E1FC0B4D87AC3656",
+            "67EE7413BD5B021AA6BB0E25E2476AD8",
+            "68EE00780789956E82D0C5EA126B3B86",
+            "8A1F01B5DD11C389ACE5F07633268DAE",
+            "9FE5383290EBDC6D7F7243D10463A556",
+            "D5CEBA435C497EB23B9764FC387FE5F4",
+            "D8DD3777B08F1AD1830C638FBB4C9F71"
+         ],
+         "productsActuallyExcluded": []
+      },
+      {
+         "day": "2020-09-10",
+         "productsToExclude": [
+            "021F61228B23DA8C452439C2DA06C635",
+            "2308D9C39FBEBE47FDCD5E028F1B3000",
+            "45ED4D2F2C26E7A6D513C152D29BCD50",
+            "5DB11A0D7DC3855ECBC4E6174CDB0A28",
+            "64FA7EB363A3D03290029810D8500D5B",
+            "66252ED46098BA0B0D8967FD760374E3",
+            "85026A4605C3FC79475DE0870F09EEEE",
+            "85FCE431C4623A243A6E486770BD2E41",
+            "99D219B0809C76853B72F2A5FAA8D497",
+            "D2381A4BEADE47CF191DD18BBB956D96",
+            "D313ED9B7ED6EC60E0F329476BC22719"
+         ],
+         "productsActuallyExcluded": []
+      }
+   ]
+}
