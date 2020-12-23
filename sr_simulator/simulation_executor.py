@@ -1,6 +1,7 @@
 import configparser
 from sr_simulator.simulation_results_postprocessor import simulation_results_postprocessor
 from sr_simulator.simulator_core import simulator_core
+from sr_simulator import partner_data_reader
 import json
 import sys
 import matplotlib.pyplot as plt
@@ -22,7 +23,6 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
         results_dict = sim_core.next_day(log_for_certification)
         for partner in results_dict:
             all_partners_results_dict[partner].append(results_dict[partner])
-        # TODO simulation_results_postproces
     postprocessor = simulation_results_postprocessor(all_partners_results_dict)
     final_results = {}
     reoriented_for_each_partner = postprocessor.reorient_results_for_each_partner()
@@ -36,51 +36,62 @@ def execute_simulation(partners_to_involve_in_simulation_str, partners_to_read_d
     final_results['summed_for_all_partners'] = summed_for_all_partners
     save_results(final_results)
     #json_object = json.dumps(log_for_certification, indent=3)
-    with open('simulation_log.json', 'w') as fp:
-        json.dump(log_for_certification, fp, indent=3)
-    print("SIMULATION FINISHED")
-    # # REORIENTED
-    # # x axis values
-    # x = []
-    # for day in range(1, days):
-    #     x.append(day)
-    # # corresponding y axis values
-    # y = reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']
-    # # plotting the points
-    # plt.plot(x, y)
-    # # naming the x axis
-    # plt.xlabel('Days of simulation')
-    # # naming the y axis
-    # plt.ylabel('Reoriented profit gain')
-    # # giving a title to my graph
-    # plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
-    #
-    # # function to show the plot
-    # plt.show()
-    # # ACCUMULATED
-    # # corresponding y axis values
-    # y = []
-    # acc = 0.0
-    # for v in reoriented_for_each_partner['C0F515F0A2D0A5D9F854008BA76EB537']['profit_gain']:
-    #     acc += v
-    #     y.append(acc)
-    # # plotting the points
-    # plt.plot(x, y)
-    # # naming the x axis
-    # plt.xlabel('Days of simulation')
-    # # naming the y axis
-    # plt.ylabel('Accumulated profit gain')
-    # # giving a title to my graph
-    # plt.title('Profit gain by days for partner_id C0F515F0A2D0A5D9F854008BA76EB537')
-    #
-    # # function to show the plot
-    # plt.show()
+
+    print("\nSIMULATION FINISHED\n")
+    while True:
+        option = input("Do you want to generate profit_gain plots? (y/n)\n")
+        if option == "n":
+            break
+        elif option == "y":
+            partner_to_show = input("Type partner id\n")
+            partner_to_show = partner_to_show.upper()
+            # REORIENTED
+            # x axis values
+            x = []
+            for day in range(1, days):
+                x.append(day)
+            # corresponding y axis values
+            y = reoriented_for_each_partner[partner_to_show]['profit_gain']
+            # plotting the points
+            plt.plot(x, y)
+            # naming the x axis
+            plt.xlabel('Days of simulation')
+            # naming the y axis
+            plt.ylabel('Reoriented profit gain')
+            plt.grid()
+            # giving a title to my graph
+            plt.title('Profit gain by days for partner_id ')
+
+            # function to show the plot
+            plt.show()
+            # ACCUMULATED
+            # corresponding y axis values
+            y = []
+            acc = 0.0
+            for v in reoriented_for_each_partner[partner_to_show]['profit_gain']:
+                acc += v
+                y.append(acc)
+            # plotting the points
+            plt.plot(x, y)
+            # naming the x axis
+            plt.xlabel('Days of simulation')
+            # naming the y axis
+            plt.ylabel('Accumulated profit gain')
+            plt.grid()
+            # giving a title to my graph
+            plt.title('Profit gain by days for partner_id ')
+            # function to show the plot
+            plt.show()
+        else:
+            print("Incorrect option! Type y if yes or n if no")
 
 
-def save_results(result_dict, path = "results.json"):
+def save_results(result_dict, path="results.json"):
     import json
     with open(path, 'w') as file:
-        json.dump(result_dict, file)
+        json.dump(result_dict, file, indent=3)
+    with open('simulation_log.json', 'w') as fp:
+        json.dump(log_for_certification, fp, indent=3)
 
 def align_config():
     missing_arg_flag = False

@@ -58,6 +58,19 @@ class partner_data_reader:
         next_day_df = partner_df[partner_df['click_timestamp'] == day]
         return next_day_df
 
+    def get_days_amount(self, partner_id):
+        partner_path = self.data_directory + "data_" + partner_id + ".csv"
+        partner_df = pd.read_csv(partner_path, sep=",", dtype=self.dtypes)
+        partner_df['click_timestamp'] = pd.to_datetime(partner_df['click_timestamp'])
+        partner_df['click_timestamp'] = [datetime.date(x) for x in partner_df['click_timestamp']]
+        first_day_date = partner_df.head(1)['click_timestamp']
+        last_day_date = partner_df.tail(1)['click_timestamp']
+        print("first: ", first_day_date, type(first_day_date))
+        print("last: ", last_day_date, type(last_day_date))
+        delta = last_day_date - first_day_date
+        days_amount = delta.days + 1
+        print(days_amount)
+        return days_amount
 
 if __name__ == "__main__":
     pdr = partner_data_reader(partners_id=["0A2CEC84A65760AD90AA751C1C3DD861"])

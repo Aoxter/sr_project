@@ -20,9 +20,9 @@ class optimizer:
         if next_day_data.empty:
             excluded_products = []
         else:
-            #print("Next day:", next_day_data['click_timestamp'][0])
-            #self.date = next_day_data['click_timestamp'][0]
             excluded_products = self.__get_excluded_products_pseudorandomly()
+            # print("Next day:", next_day_data['click_timestamp'][0])
+            # self.date = next_day_data['click_timestamp'][0]
         for p in excluded_products:
             self.products.remove(p)
         return excluded_products
@@ -41,6 +41,7 @@ class optimizer:
 
     def __get_products_seen_today(self):
         products = self.products_df['product_id'].unique().tolist()
+        return products
         # if not data_df.empty:
         #     print("Produkty przed: ", len(self.products))
         #     for p in data_df['product_id'].unique().tolist():
@@ -53,5 +54,5 @@ class optimizer:
         #     products_df.append(data_df, ignore_index=True)
         #products = list(dict.fromkeys(products))
         #products.sort()
-        return products
+
 

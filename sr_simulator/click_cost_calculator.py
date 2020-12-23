@@ -3,11 +3,11 @@ import glob
 import argparse
 import pandas as pd
 
-def calculate_click_cost(partners):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-f", default="F:/GitHub/sr_project/data/")
-    arg = parser.parse_args()
-    folder_path = arg.f
+def calculate_click_cost(partners, data_path):
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("-f", default="F:/GitHub/sr_project/data/")
+    # arg = parser.parse_args()
+    folder_path = data_path
     back_path = os.getcwd()
     os.chdir(folder_path)
     extension = 'csv'

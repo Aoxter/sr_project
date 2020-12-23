@@ -12,7 +12,7 @@ class simulator_core:
         # list of optimizers for each partner
         self.product_list_optimizer = []
         self.all_partners_results_dict = {}
-        self.click_costs = calculate_click_cost(partners_to_involve_in_simulation)
+        self.click_costs = calculate_click_cost(partners_to_involve_in_simulation, path_to_data)
         for partner_id in self.partners_to_involve_in_simulation:
             partner_click_cost = 1
             for c in self.click_costs:
